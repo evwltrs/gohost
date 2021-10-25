@@ -85,17 +85,18 @@ This is an example of how you may give instructions on setting up your project l
 To get a local copy up and running follow these simple example steps.
 
 ### Installation
+1. Clone the repo
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
    ```sh
    git clone https://github.com/evwltrs/gohost.git
    ```
-3. Install packages
+2. Install packages
+
    ```sh
    go get
    ```
-4. Enter your input your hostname and SECRET api key in `.env`
+3. Enter your input your hostname and SECRET api key in `.env`
+
    ```dotenv
    API_KEY = "changeme"
    HOSTNAME = "http://127.0.0.1:3000"
@@ -108,14 +109,27 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1. Build your executable
+1. Generate a ShareX config (optional)
+
+   ```shell
+   go run ./sharex
+   ```
+
+2. Build your executable
+
     ```shell
    go build
    ```
-2. Run your executable
+3. Run your executable
+
     ```shell
    ./gohost --port=:3000
     ```
+   For production enable prefork for multiple processes
+   
+   ```shell
+   ./gohost --port=:3000 --prod=true
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
