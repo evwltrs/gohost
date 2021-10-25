@@ -188,7 +188,5 @@ Project Link: [https://github.com/evwltrs/gohost](https://github.com/evwltrs/goh
 [issues-shield]: https://img.shields.io/github/issues/evwltrs/gohost.svg?style=for-the-badge
 [issues-url]: https://github.com/evwltrs/gohost/issues
 [license-shield]: https://img.shields.io/github/license/evwltrs/gohost.svg?style=for-the-badge
-[license-url]: https://github.com/evwltrs/gohost/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[license-url]: https://github.com/evwltrs/gohost/blob/main/LICENSE.txt
+
