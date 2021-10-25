@@ -2,7 +2,10 @@ module github.com/evwltrs/gohost
 
 go 1.17
 
-require github.com/gofiber/fiber/v2 v2.20.2
+require (
+	github.com/gofiber/fiber/v2 v2.20.2
+	github.com/joho/godotenv v1.4.0
+)
 
 require (
 	github.com/andybalholm/brotli v1.0.2 // indirect

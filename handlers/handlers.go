@@ -3,13 +3,18 @@ package handlers
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/joho/godotenv"
+	"log"
 	"os"
 )
 
 func FileUpload(c *fiber.Ctx) error {
-
-	if c.FormValue("key") == os.Getenv("API_KEY"){
-
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	key := c.Request().Header.Peek("api_key")
+	if string(key) == os.Getenv("API_KEY") {
 		file, err := c.FormFile("file")
 		if err != nil {
 			return err
@@ -22,9 +27,12 @@ func FileUpload(c *fiber.Ctx) error {
 		}
 		return c.Status(201).JSON(fiber.Map{"url": "http://localhost:3000/" + file.Filename})
 	} else {
-		return c.Status(403).SendString("API Key Invalid")
+		err := c.SendStatus(403)
+		if err != nil {
+			return err
+		}
 	}
-
+	return nil
 }
 
 func NotFound(c *fiber.Ctx) error {
