@@ -3,16 +3,28 @@ package handlers
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"os"
 )
 
 func FileUpload(c *fiber.Ctx) error {
-	file, err := c.FormFile("file")
-	if err != nil {
-		return err
+
+	if c.FormValue("key") == os.Getenv("API_KEY"){
+
+		file, err := c.FormFile("file")
+		if err != nil {
+			return err
+		}
+
+		// Save file to file directory
+		err = c.SaveFile(file, fmt.Sprintf("./static/public/%s", file.Filename))
+		if err != nil {
+			return err
+		}
+		return c.Status(201).JSON(fiber.Map{"url": "http://localhost:3000/" + file.Filename})
+	} else {
+		return c.Status(403).SendString("API Key Invalid")
 	}
 
-	// Save file to file directory
-	return c.SaveFile(file, fmt.Sprintf("./static/public/%s", file.Filename))
 }
 
 func NotFound(c *fiber.Ctx) error {
