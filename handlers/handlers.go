@@ -25,7 +25,7 @@ func FileUpload(c *fiber.Ctx) error {
 		if err != nil {
 			return err
 		}
-		return c.Status(201).JSON(fiber.Map{"url": "http://localhost:3000/" + file.Filename})
+		return c.Status(201).JSON(fiber.Map{"url": os.Getenv("HOSTNAME") + "/" + file.Filename})
 	} else {
 		err := c.SendStatus(403)
 		if err != nil {
